@@ -27,7 +27,7 @@ REM Example 2
 | Lua         | lua        | AD, AP   |
 
 * AP = Part 1 and 2, P1 = Part 1 Only, P2 = Part 2 Only.
-* AD = All Day, Dx-y = Day x to y, Dx = Day x, DxPy = On day X, Part y is solved only.
+* AD = All Day, Dx = Day x, Dx-y = Day x to Day y, DxPy = On day X, Only part y is solved.
 * AP, AD, D1P2 = All Part for All Day (Except Day 1) where only part 2 is solved.
 * Batch Name = This is the name you have to put in the LANGUAGE part of the arguement.
 
