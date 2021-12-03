@@ -1,6 +1,6 @@
 # advent-of-code
 
-My own solution to Advent Of Code
+My own solution for Advent Of Code
 
 # Running
 
