@@ -26,9 +26,10 @@ REM Example 2
 | Javascript  | Javascript | AD, AP   |
 | Lua         | lua        | AD, AP   |
 
-* AP = Part 1 and 2, P1 = Part 1 Only, P2 = Part 2 Only
-* AD = All Day, Dx-y = Day x to y, Dx = Day x, DxPy = On day X, Part y is solved only
-* Batch Name = This is the name you have to put in the LANGUAGE part of the arguement
+* AP = Part 1 and 2, P1 = Part 1 Only, P2 = Part 2 Only.
+* AD = All Day, Dx-y = Day x to y, Dx = Day x, DxPy = On day X, Part y is solved only.
+* AP, AD, D1P2 = All Part for All Day (Except Day 1) where only part 2 is solved.
+* Batch Name = This is the name you have to put in the LANGUAGE part of the arguement.
 
 # Credits
 
