@@ -33,4 +33,4 @@ REM Example 2
 
 # Credits
 
-All of the function i got from Stackoverflow (Only in lua) have been credited above it's function name.
+All of the function i got from Stackoverflow have been credited above it's function declaration.
