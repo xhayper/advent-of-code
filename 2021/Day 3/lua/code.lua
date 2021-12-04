@@ -60,7 +60,7 @@ end
 
 -- https://stackoverflow.com/questions/11669926/is-there-a-lua-equivalent-of-scalas-map-or-cs-select-function
 -- Modified by hayper
-function map(tbl, f)
+local function map(tbl, f)
 	local t = {}
 	for k, v in pairs(tbl) do
 		if #tbl >= 1 then
@@ -74,7 +74,7 @@ end
 
 -- https://gist.github.com/FGRibreau/3790217
 --
--- table.filter({"a", "b", "c", "d"}, function(o, k, i) return o >= "c" end)  --> {"c","d"}
+-- filter({"a", "b", "c", "d"}, function(o, k, i) return o >= "c" end)  --> {"c","d"}
 --
 -- @FGRibreau - Francois-Guillaume Ribreau
 -- @Redsmin - A full-feature client for Redis http://redsmin.com
