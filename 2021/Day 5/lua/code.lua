@@ -1,3 +1,7 @@
+local Array = require("Array")
+
+local A = Array("A", "B")
+
 local code = {}
 
 function code:part1(input)
