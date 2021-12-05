@@ -27,6 +27,5 @@ IF "%~3"=="lua" (
 IF "%valid%"=="false" ECHO You have entered an invalid language. && PAUSE && EXIT /B
 CD "%~1\Day %~2\%~3\"
 %exec%"index%ext%"
-PAUSE
 CD ../../../
 EXIT /B

@@ -23,7 +23,7 @@ REM Example 2
 
 | Language    | Batch Name | Coverage   |
 | ----------- | ---------- | ---------- |
-| Javascript  | Javascript | D1-4, AP   |
+| Javascript  | Javascript | D1-5, AP   |
 | Lua         | lua        | D1-4, AP   |
 
 * AP = Part 1 and 2, P1 = Part 1 Only, P2 = Part 2 Only.
