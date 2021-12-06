@@ -19,10 +19,13 @@ exports.part1 = (input) => {
     for (let raw of point) {
         let [origin, destination] = raw.split(" -> ").map(x => x.split(",").map(Number));
 
+        console.log(origin, destination);
+
         function addPoint(x, y) {
             map[y] = map[y] || [];
             map[y][x] = map[y][x] || 0;
             map[y][x]++;
+            console.log(`Y:   ${y}   X:   ${x}   ${map[y][x]}`);
         }
 
         if (origin[0] != destination[0] && origin[1] != destination[1]) continue;
