@@ -4,7 +4,7 @@ function nthTriangleNumber(n) {
 
 exports.part1 = (input) => {
     let crabPositions = input.split(",").map(Number);
-    crabPositions.sort((a, b) => a - b)
+    crabPositions.sort((a, b) => a - b);
     let leastPosition = Math.ceil(crabPositions.length % 2 == 0 ? (crabPositions[crabPositions.length / 2] + crabPositions[crabPositions.length / 2 - 1]) / 2 : crabPositions[Math.floor(crabPositions.length / 2)]); // The median of the input ceiled up.
 
     let crabPositionMap = new Map();
@@ -20,7 +20,7 @@ exports.part1 = (input) => {
 
 exports.part2 = (input) => {
     let crabPositions = input.split(",").map(Number);
-    crabPositions.sort((a, b) => a - b)
+    crabPositions.sort((a, b) => a - b);
     let crabPositionMap = new Map();
     crabPositions.forEach((v) => {
         crabPositionMap.set(v, crabPositionMap.get(v) + 1 || 1);
