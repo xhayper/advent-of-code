@@ -19,30 +19,27 @@ exports.part1 = (input) => {
     for (let raw of point) {
         let [origin, destination] = raw.split(" -> ").map(x => x.split(",").map(Number));
 
-        console.log(origin, destination);
-
         function addPoint(x, y) {
             map[y] = map[y] || [];
             map[y][x] = map[y][x] || 0;
             map[y][x]++;
-            console.log(`Y:   ${y}   X:   ${x}   ${map[y][x]}`);
         }
 
         if (origin[0] != destination[0] && origin[1] != destination[1]) continue;
-
-        if (origin[1] == destination[1]) {
-            for (let i = origin[0]; i <= destination[0]; i++) addPoint(i, origin[1]);
-
-            for (let i = origin[0]; i >= destination[0]; i--) addPoint(i, origin[1]);
-        }
 
         if (origin[0] == destination[0]) {
             for (let i = origin[1]; i <= destination[1]; i++) addPoint(origin[0], i);
 
             for (let i = origin[1]; i >= destination[1]; i--) addPoint(origin[0], i);
         }
+
+        if (origin[1] == destination[1]) {
+            for (let i = origin[0]; i <= destination[0]; i++) addPoint(i, origin[1]);
+
+            for (let i = origin[0]; i >= destination[0]; i--) addPoint(i, origin[1]);
+        }
     }
-    return map.map(m => m.filter(x => x > 1)).reduce((p, v) => p += v.filter(x => x > 1 && (Number(x) != null)).length, 0);
+    return map.map(m => m.filter(x => x > 1)).reduce((p, v) => p += v.filter(x => (Number(x) != null) && x > 1).length, 0);
 }
 
 exports.part2 = (input) => {
@@ -75,5 +72,5 @@ exports.part2 = (input) => {
             }
         }
     }
-    return map.map(m => m.filter(x => x > 1)).reduce((p, v) => p += v.filter(x => x > 1 && (Number(x) != null)).length, 0);
+    return map.map(m => m.filter(x => x > 1)).reduce((p, v) => p += v.filter(x => (Number(x) != null) && x > 1).length, 0);
 }

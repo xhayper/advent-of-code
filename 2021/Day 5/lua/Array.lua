@@ -28,7 +28,7 @@ function Array.prototype.copyWithin(self, target, start, end_)
 end
 
 function Array.prototype.every(self, callbackFn)
-	for i, v in ipairs(self) do
+	for i, v in pairs(self) do
 		if not callbackFn(v, i, rawget(self, "__table")) then
 			return false
 		end
@@ -42,7 +42,7 @@ end
 
 function Array.prototype.filter(self, callbackFn)
 	local __newArray = Array.__call()
-	for i, v in ipairs(self) do
+	for i, v in pairs(self) do
 		if callbackFn(v, i, rawget(self, "__table")) then
 			__newArray:push(v)
 		end
@@ -51,7 +51,7 @@ function Array.prototype.filter(self, callbackFn)
 end
 
 function Array.prototype.find(self, callbackFn)
-	for i, v in ipairs(self) do
+	for i, v in pairs(self) do
 		if callbackFn(v, i, rawget(self, "__table")) then
 			return v
 		end
@@ -59,7 +59,7 @@ function Array.prototype.find(self, callbackFn)
 end
 
 function Array.prototype.findIndex(self, callbackFn)
-	for i, v in ipairs(self) do
+	for i, v in pairs(self) do
 		if callbackFn(v, i, rawget(self, "__table")) then
 			return i
 		end
@@ -94,7 +94,7 @@ function Array.prototype.join(self, separator)
 	local separator = separator or ""
 	local __newString = ""
 	local __insertSeperator = false
-	for _, v in ipairs(self) do
+	for _, v in pairs(self) do
 		__newString = __newString .. (__insertSeperator and separator or "") .. (v ~= nil and tostring(v) or "")
 		-- TODO: Make v empty string if v is an Empty Array
 		__insertSeperator = true
@@ -108,7 +108,7 @@ end
 
 function Array.prototype.map(self, callbackFn)
 	local __newArray = Array.__call()
-	for i, v in ipairs(self) do
+	for i, v in pairs(self) do
 		__newArray:push(callbackFn(v, i, rawget(self, "__table")))
 	end
 	return __newArray
@@ -132,7 +132,7 @@ function Array.prototype.push(self, ...)
 	return #self
 end
 
-function internalReduce(self, accuminator, initialValue, __index, __array)
+function internalReduce(self, callbackFn, initialValue, __index, __array)
 	if not __array then
 		__array = self:clone()
 	end
@@ -150,18 +150,18 @@ function internalReduce(self, accuminator, initialValue, __index, __array)
 
 	__index = __index + 1
 
-	__array[1] = accuminator(__array[1], __array[2], __index, rawget(self, "__table"))
+	__array[1] = callbackFn(__array[1], __array[2], __index, rawget(self, "__table"))
 
 	__array:delete(2)
 
-	return internalReduce(self, accuminator, nil, __index, __array)
+	return internalReduce(self, callbackFn, nil, __index, __array)
 end
 
-function Array.prototype.reduce(self, accuminator, initialValue)
-	return internalReduce(self, accuminator, initialValue)
+function Array.prototype.reduce(self, callbackFn, initialValue)
+	return internalReduce(self, callbackFn, initialValue)
 end
 
-function internalReduceRight(self, callbackFn, initialValue, __index, __array)
+function internalReduceRight(self, accuminator, initialValue, __index, __array)
 	if not __array then
 		__array = self:clone()
 	end
@@ -179,15 +179,15 @@ function internalReduceRight(self, callbackFn, initialValue, __index, __array)
 
 	__index = __index + 1
 
-	__array[#__array] = callbackFn(__array[#__array], __array[#__array - 1], __index, rawget(self, "__table"))
+	__array[#__array] = accuminator(__array[#__array], __array[#__array - 1], __index, rawget(self, "__table"))
 
 	__array:delete(#__array - 1)
 
-	return internalReduceRight(self, callbackFn, nil, __index, __array)
+	return internalReduceRight(self, accuminator, nil, __index, __array)
 end
 
-function Array.prototype.reduceRight(self, callbackFn, initialValue)
-	return internalReduceRight(self, callbackFn, initialValue)
+function Array.prototype.reduceRight(self, accuminator, initialValue)
+	return internalReduceRight(self, accuminator, initialValue)
 end
 
 function Array.prototype.reverse(self)
@@ -213,7 +213,7 @@ function Array.prototype.slice(self, start, end_)
 end
 
 function Array.prototype.some(self, callbackFn)
-	for i, v in ipairs(self) do
+	for i, v in pairs(self) do
 		if callbackFn(v, i, rawget(self, "__table")) then
 			return true
 		end
