@@ -8,6 +8,10 @@ Array.prototype = {}
 Array.prototype.__metatable = "Array"
 Array.prototype.__type = "Array"
 
+function Array.prototype.at(self, index)
+	return self[math.min(math.max(0 > index and #self + index or index, 1), #self)]
+end
+
 function Array.prototype.concat(self, ...)
 	local values = { ... }
 	local __newArray = self:clone()
@@ -21,7 +25,7 @@ function Array.prototype.concat(self, ...)
 	return __newArray
 end
 
-function Array.prototype.copyWithin(self, target, start, end_)
+function Array.prototype.copyWithin(self, target, start, _end)
 	error("Not implemented")
 end
 
@@ -35,7 +39,19 @@ function Array.prototype.every(self, callbackFn)
 end
 
 function Array.prototype.fill(self, value, start, _end)
-	error("Not implemented")
+	if #self == 0 then
+		return self
+	end
+	local start = math.min(math.max(start and (0 > start and #self + start or start) or 1, 1), #self)
+	local _end = math.max(math.min(_end and (0 > _end and #self + _end or _end) or #self, #self), 1)
+	if start >= _end or start == _end then
+		return self
+	end
+	for count = start, _end do
+		print("A")
+		self[count] = value
+	end
+	return self
 end
 
 function Array.prototype.filter(self, callbackFn)
@@ -79,7 +95,7 @@ function Array.prototype.forEach(self, callbackFn)
 end
 
 function Array.prototype.includes(self, searchElement, fromIndex)
-	local fromIndex = math.abs((fromIndex and 0 > fromIndex and (#self + fromIndex)) or 0)
+	local fromIndex = math.abs((fromIndex and 1 > fromIndex and (#self + fromIndex)) or 1)
 	for index = fromIndex, #self do
 		if self[index] == searchElement then
 			return true
@@ -93,7 +109,9 @@ function Array.prototype.join(self, separator)
 	local __newString = ""
 	local __insertSeperator = false
 	for _, v in pairs(self) do
-		__newString = __newString .. (__insertSeperator and separator or "") .. (v ~= nil and tostring(v) or "")
+		__newString = __newString
+			.. (__insertSeperator and separator or "")
+			.. ((v ~= nil and (not Array.isArray(v) or Array.isArray(v) and #v ~= 0)) and tostring(v) or "")
 		-- TODO: Make v empty string if v is an Empty Array
 		__insertSeperator = true
 	end
@@ -101,7 +119,19 @@ function Array.prototype.join(self, separator)
 end
 
 function Array.prototype.lastIndexOf(self, searchElement, fromIndex)
-	error("Not implemented")
+	if #self == 0 then
+		return -1
+	end
+	local fromIndex = math.min(
+		math.max(((fromIndex and 0 > fromIndex) and #self + fromIndex or fromIndex) or #self, 1),
+		#self
+	)
+	for index = fromIndex, 1, -1 do
+		if self[index] == searchElement then
+			return index
+		end
+	end
+	return -1
 end
 
 function Array.prototype.map(self, callbackFn)
@@ -206,7 +236,7 @@ function Array.prototype.shift(self)
 	return element
 end
 
-function Array.prototype.slice(self, start, end_)
+function Array.prototype.slice(self, start, _end)
 	error("Not implemented")
 end
 
@@ -230,6 +260,10 @@ function Array.prototype.splice(self, start, deleteCount, ...)
 	error("Not implemented")
 end
 
+function Array.prototype.toString(self, ...)
+	return self:join(",")
+end
+
 function Array.prototype.unshift(self, ...)
 	local elements = { ... }
 	for i = 1, #elements do
@@ -251,7 +285,24 @@ function Array.prototype.clone(self)
 end
 
 Array.prototype.__tostring = function(self)
-	return string.format("[ %s ]", self:join(", "))
+	local __newString = ""
+	local __insertSeperator = false
+	for _, v in pairs(self) do
+		__newString = __newString
+			.. (__insertSeperator and ", " or "")
+			.. (
+				v ~= nil
+					and string.format(
+						"%s%s%s",
+						type(v) ~= "number" and not Array.isArray(v) and "'" or "",
+						tostring(v),
+						type(v) ~= "number" and not Array.isArray(v) and "'" or ""
+					)
+				or ""
+			)
+		__insertSeperator = true
+	end
+	return #self == 0 and "[]" or string.format("[ %s ]", __newString)
 end
 
 Array.prototype.__len = function(self)
@@ -263,6 +314,9 @@ Array.prototype.__newindex = function(self, key, value)
 		return
 	end
 	key = math.abs(tonumber(key))
+	if 1 > key then
+		return
+	end
 	if self.__table[key] == nil then
 		self.__table[key] = value
 		self.length = key > self.length and key or self.length
