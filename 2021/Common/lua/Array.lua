@@ -294,9 +294,9 @@ Array.prototype.__tostring = function(self)
 				v ~= nil
 					and string.format(
 						"%s%s%s",
-						type(v) ~= "number" and not Array.isArray(v) and "'" or "",
+						type(v) ~= "number" and type(v) ~= "nil" and not Array.isArray(v) and "'" or "",
 						tostring(v),
-						type(v) ~= "number" and not Array.isArray(v) and "'" or ""
+						type(v) ~= "number" and type(v) ~= "nil" not Array.isArray(v) and "'" or ""
 					)
 				or ""
 			)
