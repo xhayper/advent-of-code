@@ -219,6 +219,13 @@ function Array.prototype.some(self, callbackFn)
 	return false
 end
 
+function Array.prototype.sort(self, compareFunction)
+	table.sort(rawget(self, "__table"), compareFunction and function(a, b)
+		return 0 > compareFunction(a, b)
+	end)
+	return self
+end
+
 function Array.prototype.splice(self, start, deleteCount, ...)
 	error("Not implemented")
 end

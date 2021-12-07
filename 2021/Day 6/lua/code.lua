@@ -10,7 +10,7 @@ function code:part1(input)
 	local ageObject = {}
 
 	Utility
-		:split(input, ",", true)
+		.split(input, ",", true)
 		:map(function(x)
 			return tonumber(x)
 		end)
@@ -44,7 +44,7 @@ function code:part2(input)
 	local ageObject = {}
 
 	Utility
-		:split(input, ",", true)
+		.split(input, ",", true)
 		:map(function(x)
 			return tonumber(x)
 		end)

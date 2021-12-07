@@ -8,7 +8,7 @@ local Utility = dofile("..\\..\\Common\\lua\\Utility.lua")
 local code = {}
 
 function code:part1(input)
-	local input = Utility:split(input, "\n", true)
+	local input = Utility.split(input, "\n", true)
 
 	local horizontalPosition = 0
 	local depth = 0
@@ -24,14 +24,14 @@ function code:part1(input)
 		end,
 	}
 	for _, v in pairs(input) do
-		local opcode = Utility:split(v, " ", true)
+		local opcode = Utility.split(v, " ", true)
 		instruction[opcode[1]](tonumber(opcode[2]))
 	end
 	return depth * horizontalPosition
 end
 
 function code:part2(input)
-	local input = Utility:split(input, "\n", true)
+	local input = Utility.split(input, "\n", true)
 
 	local horizontalPosition = 0
 	local depth = 0
@@ -51,7 +51,7 @@ function code:part2(input)
 	}
 
 	for _, v in pairs(input) do
-		local opcode = Utility:split(v, " ", true)
+		local opcode = Utility.split(v, " ", true)
 		instruction[opcode[1]](tonumber(opcode[2]))
 	end
 

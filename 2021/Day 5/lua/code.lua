@@ -8,11 +8,11 @@ local Utility = dofile("..\\..\\Common\\lua\\Utility.lua")
 local code = {}
 
 function code:part1(input)
-	local point = Utility:split(input, "\n", true)
+	local point = Utility.split(input, "\n", true)
 	local map = Array()
 	for _, raw in pairs(point) do
-		local res = Utility:split(raw, " -> ", true):map(function(x)
-			return Utility:split(x, ",", true):map(function(x)
+		local res = Utility.split(raw, " -> ", true):map(function(x)
+			return Utility.split(x, ",", true):map(function(x)
 				return tonumber(x)
 			end)
 		end)
@@ -79,11 +79,11 @@ function code:part1(input)
 end
 
 function code:part2(input)
-	local point = Utility:split(input, "\n", true)
+	local point = Utility.split(input, "\n", true)
 	local map = Array()
 	for _, raw in pairs(point) do
-		local res = Utility:split(raw, " -> ", true):map(function(x)
-			return Utility:split(x, ",", true):map(function(x)
+		local res = Utility.split(raw, " -> ", true):map(function(x)
+			return Utility.split(x, ",", true):map(function(x)
 				return tonumber(x)
 			end)
 		end)

@@ -10,7 +10,7 @@ local code = {}
 function commonList(arr)
 	local list = Array()
 	for _, bitData in pairs(arr) do
-		local bs = Utility:split(bitData, "")
+		local bs = Utility.split(bitData, "")
 		for i = 1, #bs do
 			local bit = bs[i]
 			if list[i] == nil then
@@ -27,7 +27,7 @@ function commonList(arr)
 end
 
 function code:part1(input)
-	local input = Utility:split(input, "\n", true)
+	local input = Utility.split(input, "\n", true)
 	local list = commonList(input)
 	local gammaRate = list:map(function(v)
 		return v.one > v.zero and "1" or "0"
@@ -41,7 +41,7 @@ function code:part1(input)
 end
 
 function code:part2(input)
-	local input = Utility:split(input, "\n", true)
+	local input = Utility.split(input, "\n", true)
 
 	local generatorRate = input
 	local scrubberRate = input
@@ -53,7 +53,7 @@ function code:part2(input)
 		generatorRate = generatorRate:filter(function(bitData)
 			return #generatorRate == 1
 				or (
-					Utility:split(bitData, "")[l]
+					Utility.split(bitData, "")[l]
 					== (generatorCommonList[l].one >= generatorCommonList[l].zero and "1" or "0")
 				)
 		end)
@@ -61,7 +61,7 @@ function code:part2(input)
 		scrubberRate = scrubberRate:filter(function(bitData)
 			return #scrubberRate == 1
 				or (
-					Utility:split(bitData, "")[l]
+					Utility.split(bitData, "")[l]
 					== (scrubberCommonList[l].one >= scrubberCommonList[l].zero and "0" or "1")
 				)
 		end)

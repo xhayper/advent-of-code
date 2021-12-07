@@ -20,7 +20,7 @@ local Utility = {}
 -- for substr in gsplit(text, pattern, plain) do
 --   doSomething(substr)
 -- end
-function Utility:gsplit(text, pattern, plain)
+function Utility.gsplit(text, pattern, plain)
 	local splitStart, length = 1, #text
 	return function()
 		if splitStart then
@@ -55,9 +55,9 @@ end
 --                    string, not a Lua pattern
 --
 -- Returns: table (a sequence table containing the substrings)
-function Utility:split(text, pattern, plain)
+function Utility.split(text, pattern, plain)
 	local ret = Array()
-	for match in Utility:gsplit(text, pattern, plain) do
+	for match in Utility.gsplit(text, pattern, plain) do
 		ret:push(match)
 	end
 	return ret

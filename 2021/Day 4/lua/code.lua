@@ -8,10 +8,10 @@ local Utility = dofile("..\\..\\Common\\lua\\Utility.lua")
 local code = {}
 
 function code:part1(input)
-	input = Utility:split(input, "\n", true):filter(function(x)
+	input = Utility.split(input, "\n", true):filter(function(x)
 		return x ~= ""
 	end)
-	local drawableNumber = Utility:split(input[1], ",", true):map(function(x)
+	local drawableNumber = Utility.split(input[1], ",", true):map(function(x)
 		return tonumber(x)
 	end)
 	input:shift()
@@ -19,7 +19,7 @@ function code:part1(input)
 	for i = 1, #input / 5, 1 do
 		local board = Array()
 		for j = 1, 5 do
-			board[j] = Utility:split(input[((i - 1) * 5) + j]:gsub("  ", " "), " ", true):map(function(x)
+			board[j] = Utility.split(input[((i - 1) * 5) + j]:gsub("  ", " "), " ", true):map(function(x)
 				return tonumber(x)
 			end)
 		end
@@ -93,10 +93,10 @@ function code:part1(input)
 end
 
 function code:part2(input)
-	input = Utility:split(input, "\n", true):filter(function(x)
+	input = Utility.split(input, "\n", true):filter(function(x)
 		return x ~= ""
 	end)
-	local drawableNumber = Utility:split(input[1], ",", true):map(function(x)
+	local drawableNumber = Utility.split(input[1], ",", true):map(function(x)
 		return tonumber(x)
 	end)
 	input:shift()
@@ -104,7 +104,7 @@ function code:part2(input)
 	for i = 1, #input / 5, 1 do
 		local board = Array()
 		for j = 1, 5 do
-			board[j] = Utility:split(input[((i - 1) * 5) + j]:gsub("  ", " "), " ", true):map(function(x)
+			board[j] = Utility.split(input[((i - 1) * 5) + j]:gsub("  ", " "), " ", true):map(function(x)
 				return tonumber(x)
 			end)
 		end
