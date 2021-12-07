@@ -4,8 +4,6 @@ Array.type = "Array"
 Array.__metatable = "Array"
 Array.__type = "Array"
 
--- Prototype --
-
 Array.prototype = {}
 Array.prototype.__metatable = "Array"
 Array.prototype.__type = "Array"
@@ -14,7 +12,7 @@ function Array.prototype.concat(self, ...)
 	local values = { ... }
 	local __newArray = self:clone()
 	for i = 1, #values do
-		if Array.isArray(values[i]) then
+		if type(values[i]) == "table" or Array.isArray(values[i]) then
 			__newArray:push(table.unpack(values[i]))
 		else
 			__newArray:push(values[i])
@@ -132,7 +130,7 @@ function Array.prototype.push(self, ...)
 	return #self
 end
 
-function internalReduce(self, callbackFn, initialValue, __index, __array)
+local function internalReduce(self, callbackFn, initialValue, __index, __array)
 	if not __array then
 		__array = self:clone()
 	end
@@ -161,7 +159,7 @@ function Array.prototype.reduce(self, callbackFn, initialValue)
 	return internalReduce(self, callbackFn, initialValue)
 end
 
-function internalReduceRight(self, accuminator, initialValue, __index, __array)
+local function internalReduceRight(self, accuminator, initialValue, __index, __array)
 	if not __array then
 		__array = self:clone()
 	end
@@ -245,8 +243,6 @@ function Array.prototype.clone(self)
 	return Array.__call(self, table.unpack(rawget(self, "__table")))
 end
 
----- Metamethod ----
-
 Array.prototype.__tostring = function(self)
 	return string.format("[ %s ]", self:join(", "))
 end
@@ -279,13 +275,9 @@ Array.prototype.__pairs = function(self)
 	return next, self.__table, nil
 end
 
--- Array --
-
 function Array.isArray(value)
 	return type(value) == "table" and getmetatable(value) == "Array"
 end
-
----- Methamethod ----
 
 function Array.__call(_, ...)
 	local elements = { ... }

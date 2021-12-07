@@ -1,4 +1,5 @@
 // Thank you! Alan Malloy! For the concept!
+     
 exports.part1 = (input) => {
     let ageMap = new Map();
 
