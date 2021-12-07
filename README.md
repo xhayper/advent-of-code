@@ -24,7 +24,7 @@ REM Example 2
 | Language    | Batch Name | Coverage   |
 | ----------- | ---------- | ---------- |
 | Javascript  | Javascript | D1-7, AP   |
-| Lua         | lua        | D1-6, AP   |
+| Lua         | lua        | D1-7, AP   |
 
 * AP = Part 1 and 2, P1 = Part 1 Only, P2 = Part 2 Only.
 * AD = All Day, Dx = Day x, Dx-y = Day x to Day y, DxPy = On day X, Only part y is solved.
