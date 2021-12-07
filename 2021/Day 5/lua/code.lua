@@ -1,4 +1,6 @@
-local Array = require("Array")
+function dofile(filename) return assert(loadfile(filename))() end
+
+local Array = dofile("..\\..\\Common\\lua\\Array.lua")
 
 local code = {}
 

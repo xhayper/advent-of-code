@@ -135,10 +135,6 @@ local function internalReduce(self, callbackFn, initialValue, __index, __array)
 		__array = self:clone()
 	end
 
-	if #__array == 1 then
-		return __array[1]
-	end
-
 	if initialValue then
 		__array:unshift(initialValue)
 		__index = 0
@@ -146,9 +142,13 @@ local function internalReduce(self, callbackFn, initialValue, __index, __array)
 		__index = __index or 1
 	end
 
+	if #__array == 1 then
+		return __array[1]
+	end
+
 	__index = __index + 1
 
-	__array[1] = callbackFn(__array[1], __array[2], __index, rawget(self, "__table"))
+	__array[1] = callbackFn(__array[1], __array[2], __index, self)
 
 	__array:delete(2)
 
@@ -164,10 +164,6 @@ local function internalReduceRight(self, accuminator, initialValue, __index, __a
 		__array = self:clone()
 	end
 
-	if #__array == 1 then
-		return __array[1]
-	end
-
 	if initialValue then
 		__array:push(initialValue)
 		__index = 0
@@ -175,9 +171,13 @@ local function internalReduceRight(self, accuminator, initialValue, __index, __a
 		__index = __index or 1
 	end
 
+	if #__array == 1 then
+		return __array[1]
+	end
+
 	__index = __index + 1
 
-	__array[#__array] = accuminator(__array[#__array], __array[#__array - 1], __index, rawget(self, "__table"))
+	__array[#__array] = accuminator(__array[#__array], __array[#__array - 1], __index, self)
 
 	__array:delete(#__array - 1)
 
@@ -212,7 +212,7 @@ end
 
 function Array.prototype.some(self, callbackFn)
 	for i, v in pairs(self) do
-		if callbackFn(v, i, rawget(self, "__table")) then
+		if callbackFn(v, i, self) then
 			return true
 		end
 	end
