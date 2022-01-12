@@ -48,7 +48,6 @@ function Array.prototype.fill(self, value, start, _end)
 		return self
 	end
 	for count = start, _end do
-		print("A")
 		self[count] = value
 	end
 	return self
