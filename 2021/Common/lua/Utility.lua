@@ -54,7 +54,7 @@ end
 -- plain (boolean)  - if true (or truthy), pattern is interpreted as a plain
 --                    string, not a Lua pattern
 --
--- Returns: table (a sequence table containing the substrings)
+-- Returns: Array (a sequence array containing the substrings)
 function Utility.split(text, pattern, plain)
 	local ret = Array()
 	for match in Utility.gsplit(text, pattern, plain) do
