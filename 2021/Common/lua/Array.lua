@@ -326,7 +326,7 @@ end
 
 Array.prototype.__index = function(self, key)
 	if type(key) == "number" or tonumber(key) ~= nil then
-		return rawget(self, "__table")[math.abs(tonumber(key))]
+		return rawget(self, "__table")[math.floor(math.abs(tonumber(key)))]
 	end
 	return Array.prototype[key] or rawget(self, key)
 end
