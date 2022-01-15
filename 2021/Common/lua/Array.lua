@@ -309,13 +309,9 @@ Array.prototype.__len = function(self)
 end
 
 Array.prototype.__newindex = function(self, key, value)
-	if type(key) ~= "number" and tonumber(key) == nil then
-		return
-	end
-	key = math.abs(tonumber(key))
-	if 1 > key then
-		return
-	end
+	if type(key) ~= "number" and tonumber(key) == nil then return end
+	key = math.floor(tonumber(key))
+	if 1 > key then return  end
 	if self.__table[key] == nil then
 		self.__table[key] = value
 		self.length = key > self.length and key or self.length
@@ -326,7 +322,7 @@ end
 
 Array.prototype.__index = function(self, key)
 	if type(key) == "number" or tonumber(key) ~= nil then
-		return rawget(self, "__table")[math.floor(math.abs(tonumber(key)))]
+		return rawget(self, "__table")[math.floor(tonumber(key))]
 	end
 	return Array.prototype[key] or rawget(self, key)
 end
