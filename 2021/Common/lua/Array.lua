@@ -94,7 +94,7 @@ function Array.prototype.forEach(self, callbackFn)
 end
 
 function Array.prototype.includes(self, searchElement, fromIndex)
-	local fromIndex = math.abs((fromIndex and 1 > fromIndex and (#self + fromIndex)) or 1)
+	local fromIndex = fromIndex and 1 > fromIndex and (#self + math.floor(fromIndex))) or 1
 	for index = fromIndex, #self do
 		if self[index] == searchElement then
 			return true
@@ -122,7 +122,7 @@ function Array.prototype.lastIndexOf(self, searchElement, fromIndex)
 		return -1
 	end
 	local fromIndex = math.min(
-		math.max(((fromIndex and 0 > fromIndex) and #self + fromIndex or fromIndex) or #self, 1),
+		math.max(((fromIndex and 0 > fromIndex) and #self + math.floor(fromIndex) or math.floor(fromIndex)) or #self, 1),
 		#self
 	)
 	for index = fromIndex, 1, -1 do
