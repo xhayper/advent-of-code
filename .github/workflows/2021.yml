@@ -27,7 +27,7 @@ jobs:
           availableDay=("1" "2" "3" "4" "5" "6" "7")
 
           for day in "${availableDay[@]}"; do
-            cd Day-$day
+            cd "Day $day"
             
             # JS
             cd Javascript
