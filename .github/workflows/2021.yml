@@ -31,12 +31,12 @@ jobs:
             
             # JS
             cd Javascript
-            node index.js > /dev/null
+            time node index.js > /dev/null
             cd ..
 
             # lua
             cd lua
-            lua index.lua > /dev/nill
+            time lua index.lua > /dev/null
             cd ..
 
             cd ..
