@@ -21,7 +21,8 @@ jobs:
         run: |
           cd 2022
 
-          # Actual run part
-          cargo run -r -b day-1
-          cargo run -r -b day-2
-          cargo run -r -b day-3
+          cargo run -r -p day-1 > /dev/null
+          cargo run -r -p day-2 > /dev/null
+          cargo run -r -p day-3 > /dev/null
+
+          echo Have fun! Advent of Code!
