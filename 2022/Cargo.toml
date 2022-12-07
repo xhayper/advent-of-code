@@ -1,3 +1,13 @@
 [workspace]
 members = ["Day */"]
 exclude = ["Template/"]
+
+[workspace.package]
+edition = "2021"
+version = "1.0.0"
+authors = ["xhayper"]
+description = "Advent of Code solution"
+license = "WTFPL"
+
+[workspace.dependencies]
+regex = { version = "1.7.0", features = ["unicode"] }
