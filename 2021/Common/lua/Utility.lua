@@ -1,9 +1,4 @@
-function script_path()
-	local str = debug.getinfo(2, "S").source:sub(2)
-	return str:match("(.*/)")
- end
-
-function dofile(filename) return assert(loadfile(script_path() .. "/" .. filename))() end
+function dofile(filename) return assert(loadfile(debug.getinfo(2, "S").source:sub(2):match("(.*/)") .. "/" .. filename))() end
 
 local Array = dofile("Array.lua")
 

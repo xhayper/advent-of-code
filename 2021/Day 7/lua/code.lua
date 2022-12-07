@@ -1,6 +1,4 @@
-function dofile(filename)
-	return assert(loadfile(filename))()
-end
+function dofile(filename) return assert(loadfile(debug.getinfo(2, "S").source:sub(2):match("(.*/)") .. "/" .. filename))() end
 
 local Utility = dofile("./../../Common/lua/Utility.lua")
 
