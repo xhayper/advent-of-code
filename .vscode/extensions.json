@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    // 2021
+    "esbenp.prettier-vscode",
+    "sumneko.lua",
+    // 2022
+    "rust-lang.rust-analyzer"
+  ]
+}

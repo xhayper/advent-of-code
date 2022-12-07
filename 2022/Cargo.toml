@@ -1,0 +1,3 @@
+[workspace]
+members = ["Day */"]
+exclude = ["Day #/"]
