@@ -31,11 +31,13 @@ jobs:
             
             # JS
             cd Javascript
+            echo Javascript day $day
             time node index.js > /dev/null
             cd ..
 
             # lua
             cd lua
+            echo Lua day $day
             time lua index.lua > /dev/null
             cd ..
 
