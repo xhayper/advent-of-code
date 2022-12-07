@@ -2,8 +2,8 @@ function dofile(filename)
 	return assert(loadfile(filename))()
 end
 
-local Array = dofile("..\\..\\Common\\lua\\Array.lua")
-local Utility = dofile("..\\..\\Common\\lua\\Utility.lua")
+local Array = dofile("../../Common\\lua\\Array.lua")
+local Utility = dofile("../../Common\\lua\\Utility.lua")
 
 local code = {}
 

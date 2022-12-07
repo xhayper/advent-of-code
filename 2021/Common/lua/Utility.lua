@@ -1,6 +1,6 @@
 function dofile(filename) return assert(loadfile(filename))() end
 
-local Array = dofile("..\\Array.lua")
+local Array = dofile("../Array.lua")
 
 local Utility = {}
 

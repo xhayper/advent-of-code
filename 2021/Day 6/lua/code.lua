@@ -2,7 +2,7 @@ function dofile(filename)
 	return assert(loadfile(filename))()
 end
 
-local Utility = dofile("..\\..\\Common\\lua\\Utility.lua")
+local Utility = dofile("../../Common\\lua\\Utility.lua")
 
 local code = {}
 
