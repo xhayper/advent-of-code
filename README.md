@@ -3,5 +3,5 @@
 
 ## Credit
 
-- [Stackoverflow](https://stackoverflow.com/)
+- [StackOverflow](https://stackoverflow.com/)
 - [Advent of Code](https://adventofcode.com/)
