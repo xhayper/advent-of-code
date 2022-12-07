@@ -22,7 +22,7 @@ jobs:
 
       - name: Run
         run: |
-          cd 2022
+          cd 2021
 
           availableDay=("1" "2" "3" "4" "5" "6" "7")
 
