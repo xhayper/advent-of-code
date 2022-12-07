@@ -94,7 +94,7 @@ function Array.prototype.forEach(self, callbackFn)
 end
 
 function Array.prototype.includes(self, searchElement, fromIndex)
-	local fromIndex = fromIndex and 1 > fromIndex and (#self + math.floor(fromIndex))) or 1
+	local fromIndex = fromIndex and 1 > fromIndex and (#self + math.floor(fromIndex)) or 1
 	for index = fromIndex, #self do
 		if self[index] == searchElement then
 			return true
