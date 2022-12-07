@@ -1,0 +1,27 @@
+name: "2022"
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+
+      - name: Setup Rust
+        uses: ATiltedTree/setup-rust@v1
+        with:
+          rust-version: stable
+
+      - name: Run
+        run: |
+          cd 2022
+
+          # Actual run part
+          cargo run -r -b day-1
+          cargo run -r -b day-2
+          cargo run -r -b day-3
