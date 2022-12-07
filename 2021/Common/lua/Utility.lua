@@ -1,6 +1,11 @@
-function dofile(filename) return assert(loadfile(filename))() end
+function script_path()
+	local str = debug.getinfo(2, "S").source:sub(2)
+	return str:match("(.*/)")
+ end
 
-local Array = dofile("../Array.lua")
+function dofile(filename) return assert(loadfile(script_path() .. "/" .. filename))() end
+
+local Array = dofile("Array.lua")
 
 local Utility = {}
 
