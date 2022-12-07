@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 19
 
-      - uses: leafo/gh-actions-lua@v5
+      - uses: leafo/gh-actions-lua@v9
         with:
           luaVersion: "5.1.5"
 
