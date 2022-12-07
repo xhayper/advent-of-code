@@ -20,8 +20,10 @@ jobs:
         run: |
           cd 2022
 
-          time cargo run -r -p day-1 > /dev/null
-          time cargo run -r -p day-2 > /dev/null
-          time cargo run -r -p day-3 > /dev/null
+          availableDay=("1" "2" "3")
+
+          for day in "${availableDay[@]}"; do
+            time cargo run -r -p day-$day > /dev/null
+          done
 
           echo Have fun! Advent of Code!

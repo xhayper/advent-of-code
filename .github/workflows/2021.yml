@@ -1,0 +1,45 @@
+name: "2022"
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+
+      - uses: xpol/setup-lua@v1
+        with:
+          lua-version: "5.1.5"
+
+      - name: Run
+        run: |
+          cd 2022
+
+          availableDay=("1" "2" "3" "4" "5" "6" "7")
+
+          for day in "${availableDay[@]}"; do
+            cd Day-$day
+            
+            # JS
+            cd Javascript
+            node index.js > /dev/null
+            cd ..
+
+            # lua
+            cd lua
+            lua index.lua > /dev/nill
+            cd ..
+
+            cd ..
+          done
+
+          echo Have fun! Advent of Code!
