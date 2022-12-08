@@ -17,6 +17,15 @@ impl Block {
     fn add(&mut self, c: char) {
         self.content.push(c);
     }
+
+    fn move_to(&mut self, other: &mut Block, amount: usize) {
+        for _ in 0..amount {
+            if self.content.is_empty() {
+                break;
+            }
+            other.content.push(self.content.pop().unwrap());
+        }
+    }
 }
 
 pub fn part_1(input: String) -> String {
