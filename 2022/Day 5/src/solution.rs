@@ -114,8 +114,9 @@ pub fn part_2(input: String) -> String {
                 .extend(ch_clone.iter().cloned());
             block_list.get_mut(from - 1).unwrap().truncate(start);
         }
-    }
 
+        drop(re);
+    }
     drop(is_at_number);
 
     let mut result = String::new();
