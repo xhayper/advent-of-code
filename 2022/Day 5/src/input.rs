@@ -15,7 +15,7 @@ pub fn first_example_answer() -> String {
 }
 
 pub fn second_example_answer() -> String {
-    "".to_string()
+    "MCD".to_string()
 }
 
 pub fn input() -> String {
