@@ -132,6 +132,8 @@ pub fn part_2(input: String) -> String {
 
         smallest = size;
     }
+    
+    drop(avaiable_space);
 
     smallest.to_string()
 }
