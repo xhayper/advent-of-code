@@ -11,3 +11,4 @@ license = "WTFPL"
 
 [workspace.dependencies]
 regex = { version = "1.7.0", features = ["unicode"] }
+itertools = "0.10.5"
