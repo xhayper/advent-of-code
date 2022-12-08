@@ -3,9 +3,11 @@ name: "2021"
 on:
   push:
     paths:
+      - ".github/workflows/2021.yml"
       - "2021/**/*.*"
   pull_request:
     paths:
+      - ".github/workflows/2021.yml"
       - "2021/**/*.*"
 
 jobs:

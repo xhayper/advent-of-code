@@ -3,9 +3,11 @@ name: "2022"
 on:
   push:
     paths:
+      - ".github/workflows/2022.yml"
       - "2022/**/*.*"
   pull_request:
     paths:
+      - ".github/workflows/2022.yml"
       - "2022/**/*.*"
 
 jobs:
@@ -27,6 +29,7 @@ jobs:
           availableDay=("1" "2" "3" "4" "5")
 
           for day in "${availableDay[@]}"; do
+            cargo build -r -p day-$day
             time cargo run -r -p day-$day > /dev/null
           done
 
