@@ -20,7 +20,7 @@ jobs:
         run: |
           cd 2022
 
-          availableDay=("1" "2" "3" "4")
+          availableDay=("1" "2" "3" "4" "5")
 
           for day in "${availableDay[@]}"; do
             time cargo run -r -p day-$day > /dev/null
