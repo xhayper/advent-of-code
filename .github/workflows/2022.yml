@@ -2,7 +2,11 @@ name: "2022"
 
 on:
   push:
+    paths:
+      - "2022/**/*.*"
   pull_request:
+    paths:
+      - "2022/**/*.*"
 
 jobs:
   run:
