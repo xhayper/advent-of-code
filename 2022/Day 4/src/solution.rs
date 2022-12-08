@@ -39,6 +39,8 @@ pub fn part_2(input: String) -> String {
 
         if first_range.start <= second_range.end && first_range.end >= second_range.start {
             overlap += 1;
+        } else if second_range.start <= first_range.end && second_range.end >= first_range.start {
+            overlap += 1;
         }
     }
 
