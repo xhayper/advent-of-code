@@ -26,46 +26,7 @@ jobs:
         with:
           luaVersion: "5.4"
 
-      # - name: Run
-      #   run: |
-      #     cd 2021
-
-      #     availableDay=("1" "2" "3" "4" "5" "6" "7")
-
-      #     for day in "${availableDay[@]}"; do
-      #       cd "Day $day"
-
-      #       # JS
-      #       cd Javascript
-      #       time node index.js > /dev/null
-      #       cd ..
-
-      #       # lua
-      #       cd lua
-      #       time lua index.lua > /dev/null
-      #       cd ..
-
-      #       cd ..
-      #     done
-
-      #     echo Have fun! Advent of Code!
-
-      - name: Run
-        continue-on-error: true
-        run: |
-          cd 2021
-
-          availableDay=("1" "2" "3" "4" "5" "6" "7")
-
-          for day in "${availableDay[@]}"; do
-            cd "Day $day"/lua
-            time lua index.lua > /dev/null
-            cd ../../
-          done
-
-          echo Have fun! Advent of Code!
-
-      - name: Run
+      - name: Run (javascript)
         continue-on-error: true
         run: |
           cd 2021
@@ -78,4 +39,19 @@ jobs:
             cd ../../
           done
 
+      - name: Run (lua)
+        continue-on-error: true
+        run: |
+          cd 2021
+
+          availableDay=("1" "2" "3" "4" "5" "6" "7")
+
+          for day in "${availableDay[@]}"; do
+            cd "Day $day"/lua
+            time lua index.lua > /dev/null
+            cd ../../
+          done
+
+      - name: Run
+        run: |
           echo Have fun! Advent of Code!
